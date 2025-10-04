@@ -1,0 +1,127 @@
+---
+import Card from "../components/Card/Card.astro";
+import CardHeader from "../components/Card/CardHeader.astro";
+import { Icon } from "astro-icon/components";
+import profile from "../data/profile.json";
+
+type Project = {
+  title: string;
+  description: string;
+  technologies: string[];
+  codeUrl: string;
+  docsUrl?: string;
+  featured: boolean;
+  type: string;
+  highlights: string[];
+};
+const { featured, others } = profile.projects.reduce<{
+  featured: Project[];
+  others: Project[];
+}>(
+  (acc, p) => {
+    if (p.featured) {
+      acc.featured.push(p);
+    } else {
+      acc.others.push(p);
+    }
+    return acc;
+  },
+  { featured: [], others: [] },
+);
+---
+
+<section
+  id="project-section"
+  class="nav-page-section section-spacing bg-background py-20"
+>
+  <div class="container-spacing">
+    <div class="space-y-16">
+      {/* Section Header */}
+      <div class="space-y-4 sm:text-center">
+        <h3 class="text-foreground text-3xl font-bold sm:text-4xl">
+          Featured Projects
+        </h3>
+        <p class="text-muted-foreground mx-auto max-w-2xl text-lg text-balance">
+          Collection of personal projects highlighting end-to-end system design,
+          automation, tooling, and practical software engineering experience
+          across multiple technologies.
+        </p>
+      </div>
+
+      {/* Featured Projects */}
+      <div class="space-y-8">
+        <h4 class="text-foreground text-2xl font-semibold">Highlighted Work</h4>
+        <div class="grid gap-8 lg:grid-cols-2">
+          {
+            featured.map((project, i) => (
+              <Card
+                description={project.description}
+                id={`personal-highlighted-project-${i}`}
+                technologies={project.technologies}
+                pointsHeader="Highlights"
+                points={project.highlights}
+              >
+                <CardHeader
+                  title={project.title}
+                  slot="header"
+                  category={project.type}
+                  externalLink={project.codeUrl}
+                />
+                <div class="flex gap-3 pt-2" slot="footer">
+                  {project.docsUrl && (
+                    <a
+                      class="btn-ghost btn-size-sm"
+                      href={project.docsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Icon name="external-link" class="icon" />
+                      Docs
+                    </a>
+                  )}
+                </div>
+              </Card>
+            ))
+          }
+        </div>
+
+        <div class="space-y-8">
+          <h4 class="text-foreground text-2xl font-semibold">Side Projects</h4>
+          <div class="grid grid-flow-row gap-8 lg:grid-cols-2">
+            {
+              others.map((project, i) => (
+                <Card
+                  description={project.description}
+                  id={`personal-side-project-${i}`}
+                  technologies={project.technologies}
+                  pointsHeader="Highlights"
+                  points={project.highlights}
+                >
+                  <CardHeader
+                    title={project.title}
+                    slot="header"
+                    category={project.type}
+                    externalLink={project.codeUrl}
+                  />
+                  <div class="flex gap-3 pt-2" slot="footer">
+                    {project.docsUrl && (
+                      <a
+                        class="btn-ghost btn-size-sm"
+                        href={project.docsUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Icon name="external-link" class="icon" />
+                        Docs
+                      </a>
+                    )}
+                  </div>
+                </Card>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

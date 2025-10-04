@@ -94,5 +94,89 @@
       "technologies": ["Go", "gRPC", "Git internals", "Prometheus"],
       "url": "https://gitlab.com/gitlab-org/gitaly"
     }
+  ],
+
+  "projects": [
+    {
+      "title": "Srotas",
+      "description": "CLI tool for orchestrating API requests and testing distributed workflows.",
+      "highlights": [
+        "Built a Go CLI application with Cobra to chain API requests for simulating complex workflows.",
+        "Enabled declarative scenario definitions and reusable orchestration patterns for testing distributed interactions.",
+        "Structured testing framework helps debug APIs and validate multi-service behaviors.",
+        "Showcases scalable architecture design and automation for API-driven workflows."
+      ],
+      "technologies": ["Go", "Cobra", "REST APIs"],
+      "codeUrl": "https://github.com/santhanuv/srotas",
+      "docsUrl": "https://santhanuv.github.io/srotas",
+      "stars": 35,
+      "forks": 4,
+      "featured": true,
+      "type": "Personal Project"
+    },
+    {
+      "title": "SanArch",
+      "description": "Profile-driven Arch Linux installer for automated system setup.",
+      "highlights": [
+        "Automates Arch Linux installation using YAML-based profiles for reproducible setups.",
+        "Supports flexible system configurations and ricing workflows for self-hosted environments.",
+        "Improves developer productivity by reducing manual system setup overhead.",
+        "Single-maintainer project showcasing scripting, configuration management, and automation skills."
+      ],
+      "technologies": ["Python", "YAML", "Bash", "Linux"],
+      "codeUrl": "https://github.com/santhanuv/sanarch",
+      "stars": 12,
+      "forks": 2,
+      "featured": true,
+      "type": "Personal Project"
+    },
+    {
+      "title": "Placement Cell Management System",
+      "description": "Full-stack platform to manage student placement records.",
+      "highlights": [
+        "Developed web application to manage, filter, and export student placement data.",
+        "Implemented PostgreSQL schemas, REST APIs in Node.js, and React-based frontend dashboards.",
+        "Improved recruiter workflow by providing structured and exportable placement data.",
+        "Demonstrates full-stack development and backend database design skills."
+      ],
+      "technologies": ["React", "Node.js", "PostgreSQL"],
+      "codeUrl": "https://github.com/santhanuv/placement-cell",
+      "stars": 5,
+      "forks": 1,
+      "featured": false,
+      "type": "Academic Project"
+    },
+    {
+      "title": "Hospital Management System",
+      "description": "CRUD-based platform for hospital administration.",
+      "highlights": [
+        "Implemented patient and staff management, appointment scheduling, and medical record storage.",
+        "Built backend APIs with Node.js and MySQL, and frontend with React.",
+        "Supports typical hospital workflows and database-driven CRUD operations.",
+        "Demonstrates backend API design and database interaction skills."
+      ],
+      "technologies": ["React", "Node.js", "MySQL"],
+      "codeUrl": "https://github.com/santhanuv/hospital-management-system",
+      "stars": 3,
+      "forks": 0,
+      "featured": false,
+      "type": "Academic Project"
+    },
+    {
+      "title": "Decentralized E-Commerce Platform",
+      "description": "Experimental Solana blockchain-based marketplace.",
+      "highlights": [
+        "Built decentralized e-commerce application with Rust smart contracts and React frontend.",
+        "Implemented wallet integration, product listing, and purchasing flows on Solana blockchain.",
+        "Focused on learning Rust ownership model, Solana programming, and conflict resolution patterns.",
+        "Showcases experimentation with Web3, blockchain logic, and decentralized architectures."
+      ],
+      "technologies": ["Rust", "React", "Solana", "Web3"],
+      "codeUrl": "https://github.com/santhanuv/solana-ecommerce",
+      "stars": 0,
+      "forks": 0,
+      "featured": false,
+      "type": "Academic Project"
+    }
   ]
 }
