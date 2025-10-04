@@ -64,5 +64,35 @@
       "focus": "Specialized in Computer Science & Engineering",
       "description": "Focused on foundational computer science concepts, distributed algorithms, and systems design, preparing for a career in backend and distributed systems engineering."
     }
+  ],
+  "ossMaintained": [
+    {
+      "name": "GitLab Runner Fleeting Plugin for VMware vSphere",
+      "description": "Community-maintained plugin for provisioning ephemeral GitLab Runner VMs on vSphere, enabling scalable CI/CD pipelines in enterprise environments.",
+      "role": "Maintainer",
+      "technologies": ["Go", "GitLab Runner", "govmomi", "cloud-init"],
+      "stats": { "stars": 5, "forks": 1, "contributors": 3 },
+      "highlights": [
+        "Designed and provisioned ephemeral build runners on vSphere using template cloning, improving CI/CD efficiency",
+        "Actively maintained the plugin with bug fixes and responded to community contributions",
+        "Officially listed in GitLab documentation as a community-supported plugin, establishing credibility in the OSS ecosystem"
+      ],
+      "url": "https://gitlab.com/santhanuv/fleeting-plugin-vmware-vsphere"
+    }
+  ],
+  "ossContributed": [
+    {
+      "name": "GitLab Gitaly",
+      "description": "Contributed to GitLab’s core Git storage gRPC service, powering distributed systems and ensuring reliable repository operations.",
+      "type": "Reliability & Maintainability Improvements",
+      "highlights": [
+        "Fixed missing error handling in ReadMonitor for SSHArchive/SSHUpload, preventing silent failures and ensuring robust logging",
+        "Implemented bottom-up reflection-based config serialization, making Gitaly’s config struct the single source of truth",
+        "Explored AST-based top-down approach for config documentation generation, improving maintainability",
+        "Proposed and implemented Git refs verification in housekeeping with Prometheus metrics, enhancing monitoring and reliability"
+      ],
+      "technologies": ["Go", "gRPC", "Git internals", "Prometheus"],
+      "url": "https://gitlab.com/gitlab-org/gitaly"
+    }
   ]
 }

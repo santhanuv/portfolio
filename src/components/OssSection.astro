@@ -1,0 +1,84 @@
+---
+import Card from "../components/Card/Card.astro";
+import CardHeader from "../components/Card/CardHeader.astro";
+import profile from "../data/profile.json";
+
+const maintainedProjects = profile.ossMaintained;
+const contributedProjects = profile.ossContributed;
+---
+
+<section
+  id="oss-section"
+  class="nav-page-section section-spacing bg-gradient-secondary dark:bg-gradient-secondary-dark py-20"
+>
+  <div class="container-spacing">
+    <div class="mb-16 space-y-4 sm:text-center">
+      <h3 class="text-foreground text-3xl font-bold md:text-4xl">
+        Open Source Contributions
+      </h3>
+      <p class="text-muted-foreground mx-auto max-w-3xl text-lg">
+        Actively contributing to the open source ecosystem through maintained
+        projects and meaningful contributions to major distributed systems
+        projects.
+      </p>
+    </div>
+
+    {/* Maintained Projects */}
+    <div class="mb-16">
+      <div class="mb-8 flex items-center gap-3">
+        <h4 class="text-foreground text-2xl font-semibold">
+          Projects I Maintain
+        </h4>
+      </div>
+
+      <div class="grid grid-cols-1 gap-6 lg:grid-cols-1">
+        {
+          maintainedProjects.map((project, i) => (
+            <Card
+              description={project.description}
+              id={`oss-maintained-${i}`}
+              pointsHeader="Highlights"
+              points={project.highlights}
+              technologies={project.technologies}
+            >
+              <CardHeader
+                title={project.name}
+                role={project.role}
+                externalLink={project.url}
+                slot="header"
+              />
+            </Card>
+          ))
+        }
+      </div>
+    </div>
+
+    {/* Major Contributions */}
+    <div>
+      <div class="mb-8 flex items-center gap-3">
+        <h4 class="text-foreground text-2xl font-bold">Major Contributions</h4>
+      </div>
+
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-1">
+        {
+          contributedProjects.map((contribution, i) => (
+            <Card
+              description={contribution.description}
+              id={`oss-contributed-${i}`}
+              pointsHeader="Highlights"
+              points={contribution.highlights}
+              technologies={contribution.technologies}
+            >
+              <CardHeader
+                title={contribution.name}
+                role="Contributor"
+                externalLink={contribution.url}
+                slot="header"
+              />
+            </Card>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
