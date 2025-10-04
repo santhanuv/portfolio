@@ -1,0 +1,80 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<footer id="footer-section" class="bg-card border-border border-t">
+  <div class="container-spacing section-spacing">
+    <div class="space-y-8 py-12">
+      {/* Main Content */}
+      <div class="space-y-6 sm:text-center">
+        <h2 class="text-foreground text-3xl font-bold sm:text-4xl">
+          Let's Connect
+        </h2>
+        <p class="text-muted-foreground mx-auto max-w-2xl text-lg text-balance">
+          I'm always open to discussing job opportunities, technical
+          discussions, collaboration, mentorship, or just geeking out about
+          technology. Let's connect and build something amazing together!
+        </p>
+
+        {/* Primary CTA */}
+        <div
+          class="flex flex-col justify-center gap-4 sm:flex-row sm:items-center"
+        >
+          <div class="btn-hero btn-size-lg">
+            <Icon name="mail" class="mr-2 h-4 w-4" />
+            Get in Touch
+          </div>
+
+          <div class="btn-outline btn-size-lg">
+            <Icon name="mail" class="mr-2 h-4 w-4" />
+            Download Resume
+          </div>
+        </div>
+
+        {/* Social Links */}
+        <div class="flex justify-center gap-3 pt-4">
+          <a
+            class="btn-outline btn-size-icon"
+            href="https://github.com/yourusername"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub Profile"
+          >
+            <Icon name="github" class="icon-md" />
+          </a>
+          <a
+            class="btn-outline btn-size-icon"
+            href="https://gitlab.com/yourusername"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitLab Profile"
+          >
+            <Icon name="gitlab" class="icon-md" />
+          </a>
+          <a
+            class="btn-outline btn-size-icon"
+            href="https://linkedin.com/in/yourprofile"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn Profile"
+          >
+            <Icon name="linkedin" class="icon-md" />
+          </a>
+        </div>
+      </div>
+
+      {/* Footer Info */}
+      <div class="border-border border-t pt-8">
+        <div
+          class="text-muted-foreground flex flex-col items-center justify-center gap-4 text-sm sm:flex-row"
+        >
+          <div class="flex items-center gap-2">
+            <span>© 2025</span>
+            <span class="text-muted-foreground/60">•</span>
+            <span>Built using Astro & Tailwind</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
