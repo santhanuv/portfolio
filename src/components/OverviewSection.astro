@@ -1,0 +1,51 @@
+---
+import { Icon } from "astro-icon/components";
+import highlights from "../data/highlights.json";
+---
+
+<section
+  id="overview-section"
+  class="bg-gradient-secondary dark:bg-gradient-secondary-dark"
+>
+  <div class="container-spacing">
+    <div class="mb-16 space-y-4 sm:text-center">
+      <h3 class="text-foreground text-3xl font-bold md:text-4xl">
+        What I Bring to the Table
+      </h3>
+      <p class="text-muted-foreground mx-auto max-w-3xl">
+        A comprehensive skill set built through hands-on professional
+        experience, open source contributions, and continuous learning in
+        distributed systems engineering.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {
+        highlights.map((item) => {
+          const icon = item.icon;
+          return (
+            <div class="card group duration-normal">
+              <div class="space-y-4 p-6">
+                <div class="bg-primary/10 group-hover:bg-primary/20 flex h-12 w-12 items-center justify-center rounded-lg transition-colors">
+                  <Icon
+                    name={icon}
+                    class="text-primary h-6 w-6"
+                    aria-hidden="true"
+                  />
+                </div>
+                <div class="space-y-2">
+                  <h4 class="text-foreground text-sm leading-tight font-semibold">
+                    {item.title}
+                  </h4>
+                  <p class="text-muted-foreground text-sm leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>
