@@ -1,0 +1,44 @@
+[
+  {
+    "navLink": "hero-nav-link",
+    "navLinkMob": "hero-nav-link-mob",
+    "name": "Home",
+    "section": "hero-section",
+    "icon": "house"
+  },
+  {
+    "navLink": "overview-nav-link",
+    "navLinkMob": "overview-nav-link-mob",
+    "name": "Overview",
+    "section": "overview-section",
+    "icon": "eye"
+  },
+  {
+    "navLink": "experience-nav-link",
+    "navLinkMob": "experience-nav-link-mob",
+    "name": "Experience",
+    "section": "experience-section",
+    "icon": "briefcase"
+  },
+  {
+    "navLink": "oss-nav-link",
+    "navLinkMob": "oss-nav-link-mob",
+    "name": "OSS",
+    "section": "oss-section",
+    "icon": "globe"
+  },
+  {
+    "navLink": "project-nav-link",
+    "navLinkMob": "project-nav-link-mob",
+    "name": "Projects",
+    "section": "project-section",
+    "icon": "code"
+  },
+  {
+    "navLink": "activity-nav-link",
+    "navLinkMob": "activity-nav-link-mob",
+    "name": "Activity",
+    "section": "activity-section",
+    "icon": "activity"
+  }
+]

@@ -1,0 +1,65 @@
+---
+import ThemeToggle from "../components/ThemeToggle.astro";
+import { Icon } from "astro-icon/components";
+import navigations from "../data/navigations.json";
+---
+
+<header
+  class="bg-background/90 border-border fixed top-0 right-0 left-0 z-50 border-b shadow-lg transition-all duration-300"
+>
+  <div class="container-spacing section-spacing">
+    <div class="flex h-16 items-center justify-between">
+      <button
+        class="text-md text-foreground hover:text-primary font-bold transition-colors"
+      >
+        <span class="md:hidden lg:block">Santhanu Vinod</span>
+      </button>
+      <nav>
+        <div class="hidden items-center gap-3 md:flex md:gap-2">
+          {
+            navigations.map((n) => (
+              <a
+                id={n.navLink}
+                class="btn-ghost btn-size-sm navbar-item"
+                href={`#${n.section}`}
+              >
+                <Icon name={n.icon} class="icon" />
+                {n.name}
+              </a>
+            ))
+          }
+        </div>
+
+        {/* Mobile Bottom Navigation */}
+        <div
+          class="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 transform md:hidden"
+        >
+          <div
+            class="bg-background/95 border-border rounded-full border px-4 py-2 shadow-lg"
+          >
+            <div class="flex items-center gap-2">
+              {
+                navigations.map((n) => {
+                  return (
+                    <a
+                      id={n.navLinkMob}
+                      class="btn-ghost btn-size-icon navbar-item rounded-full"
+                      href={`#${n.section}`}
+                    >
+                      <Icon name={n.icon} class="icon" />
+                    </a>
+                  );
+                })
+              }
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div class="z-100 flex gap-4">
+        <ThemeToggle />
+      </div>
+    </div>
+  </div>
+</header>
+
+<script src="../scripts/nav-highlighter.ts"></script>

@@ -1,0 +1,32 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<button
+  id="theme-toggle-btn"
+  class="btn-outline btn-size-icon text-foreground transition-colors"
+>
+  <Icon
+    name="sun"
+    class="icon scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90"
+  />
+  <Icon
+    name="moon"
+    class="icon absolute h-4 w-4 scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0"
+  />
+  <span class="sr-only">Toggle theme</span>
+</button>
+
+<script is:inline>
+  document.documentElement.classList.toggle(
+    "dark",
+    window.matchMedia("(prefers-color-scheme: dark)").matches,
+  );
+</script>
+
+<script>
+  const toggleBtn = document.getElementById("theme-toggle-btn");
+  toggleBtn?.addEventListener("click", () => {
+    document.documentElement.classList.toggle("dark");
+  });
+</script>
