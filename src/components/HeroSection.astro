@@ -1,0 +1,149 @@
+---
+import { Icon } from "astro-icon/components";
+import {
+  name,
+  currentRole,
+  coreTags,
+  coreTechnologies,
+  mainSummary,
+  subSummary,
+  profileLinks,
+  careerStartDate,
+  statsSummary,
+} from "../data/profile.json";
+
+const today = new Date();
+const careerStart = new Date(careerStartDate);
+
+let yoe = today.getFullYear() - careerStart.getFullYear();
+const monthDiff = today.getMonth() - careerStart.getMonth();
+
+// adjust if the current month/day is before the start month/day
+if (
+  monthDiff < 0 ||
+  (monthDiff === 0 && today.getDate() < careerStart.getDate())
+) {
+  yoe--;
+}
+
+const statsWithYoe = [
+  ...statsSummary,
+  { value: `${yoe}+`, label: "Years Exp" },
+];
+---
+
+<section
+  id="hero-section"
+  class="bg-gradient-hero dark:bg-gradient-hero-dark relative flex min-h-screen items-center justify-center py-4"
+>
+  <div class="container-spacing mt-30 mb-15 lg:m-0">
+    <div class="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-16">
+      <div class="fade-in lg:col-span-8">
+        <div class="space-y-6">
+          <div class="space-y-3">
+            <h1
+              class="text-foreground text-4xl font-bold sm:text-5xl lg:text-6xl"
+            >
+              {name}
+            </h1>
+            <h2
+              class="text-gradient text-xl font-medium sm:text-2xl lg:text-3xl"
+            >
+              {currentRole}
+            </h2>
+            <p class="text-muted-foreground font-mono">
+              {coreTags.join(" • ")}
+            </p>
+          </div>
+          <div class="max-w-2xl space-y-4">
+            <p class="text-foreground/90 text-lg leading-relaxed text-balance">
+              {mainSummary}
+            </p>
+            <p class="text-muted-foreground leading-relaxed">
+              {subSummary}
+            </p>
+          </div>
+          <div class="flex flex-col gap-4 pt-4 sm:flex-row">
+            <a class="btn-hero btn-size-lg">
+              <Icon name="download" class="icon-md" />
+              Download Resume
+            </a>
+            <a class="btn-professional btn-size-lg">
+              <Icon name="mail" class="icon-md" />
+              Get in Touch
+            </a>
+          </div>
+
+          <div class="flex justify-center gap-4 pt-2 sm:justify-start">
+            <a
+              class="btn-ghost btn-size-icon hover:text-primary"
+              aria-label="GitHub Profile"
+              href={profileLinks.github}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Icon name="github" class="icon-md" />
+            </a>
+            <a
+              class="btn-ghost btn-size-icon hover:text-primary"
+              aria-label="LinkedIn Profile"
+              href={profileLinks.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Icon name="linkedin" class="icon-md" />
+            </a>
+            <a
+              class="btn-ghost btn-size-icon hover:text-primary"
+              aria-label="GitLab Profile"
+              href={profileLinks.gitlab}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Icon name="gitlab" class="icon-md" />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-up lg:col-span-4">
+        <div class="space-y-8">
+          <div class="grid grid-cols-1 gap-6 text-center">
+            {
+              statsWithYoe.map((s) => (
+                <div class="space-y-2">
+                  <div class="text-primary text-3xl font-bold">{s.value}</div>
+                  <div class="text-muted-foreground text-sm">{s.label}</div>
+                </div>
+              ))
+            }
+          </div>
+
+          <div class="space-y-4">
+            <h3 class="text-foreground text-center text-lg font-semibold">
+              Core Technologies
+            </h3>
+            <div class="grid grid-cols-2 gap-3">
+              {coreTechnologies.map((tech) => <div class="tag">{tech}</div>)}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {/* Scroll Indicator */}
+  <div
+    class="absolute bottom-8 left-1/2 hidden -translate-x-1/2 transform animate-bounce lg:block"
+    aria-hidden="true"
+  >
+    <div
+      class="border-muted-foreground/30 flex h-10 w-6 justify-center rounded-full border-2"
+    >
+      <div
+        class="bg-muted-foreground/50 mt-2 h-3 w-1 animate-pulse rounded-full"
+      >
+      </div>
+    </div>
+  </div>
+</section>

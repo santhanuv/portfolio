@@ -1,0 +1,22 @@
+{
+  "name": "Santhanu Vinod",
+  "currentRole": "Distributed Systems Engineer",
+  "coreTags": ["OSS Maintainer", "GitLab Gitaly Contributor (Go)"],
+  "profileLinks": {
+    "github": "https://github.com/santhanuv",
+    "gitlab": "https://gitlab.com/santhanuv",
+    "linkedin": "https://www.linkedin.com/in/santhanu-vinod/"
+  },
+  "careerStartDate": "2023-09-11",
+  "coreTechnologies": [
+    "Go",
+    "Kafka",
+    "gRPC",
+    "Event Sourcing",
+    "PostgreSQL",
+    "Docker & K8s"
+  ],
+  "mainSummary": "Distributed systems engineer transitioning from .NET to Go. Maintainer of GitLab's vSphere fleeting plugin and contributor to Gitaly (Git RPC service). Building event-driven systems with Kafka, saga patterns, and event sourcing in production.",
+  "subSummary": "Demonstrated Go proficiency through maintained OSS tooling and merged contributions to one of the largest Go codebases. Seeking remote Go distributed systems roles.",
+  "statsSummary": [{ "value": ".NET → Go", "label": "Active Transition" }]
+}

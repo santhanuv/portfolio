@@ -258,7 +258,7 @@
   }
 
   .btn-hero {
-    @apply btn bg-gradient-primary text-primary-foreground hover:shadow-hover shadow-lg transition-all duration-300 hover:scale-105;
+    @apply btn bg-gradient-primary dark:bg-gradient-primary-dark text-primary-foreground shadow-lg;
   }
 
   .btn-professional {
