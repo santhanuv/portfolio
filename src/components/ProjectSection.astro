@@ -8,11 +8,11 @@ type Project = {
   title: string;
   description: string;
   technologies: string[];
+  highlights: string[];
   codeUrl: string;
   docsUrl?: string;
   featured: boolean;
   type: string;
-  highlights: string[];
 };
 const { featured, others } = profile.projects.reduce<{
   featured: Project[];
@@ -30,10 +30,7 @@ const { featured, others } = profile.projects.reduce<{
 );
 ---
 
-<section
-  id="project-section"
-  class="nav-page-section section-spacing bg-background py-20"
->
+<section id="project-section" class="section-spacing bg-background py-20">
   <div class="container-spacing">
     <div class="space-y-16">
       {/* Section Header */}
@@ -87,7 +84,7 @@ const { featured, others } = profile.projects.reduce<{
 
         <div class="space-y-8">
           <h4 class="text-foreground text-2xl font-semibold">Side Projects</h4>
-          <div class="grid grid-flow-row gap-8 lg:grid-cols-2">
+          <div class="grid gap-8 lg:grid-cols-2">
             {
               others.map((project, i) => (
                 <Card

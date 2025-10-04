@@ -8,13 +8,13 @@ import navigations from "../data/navigations.json";
 
 type NavHighlighterState = {
   isMobile: boolean;
-  activeThreshold: number;
+  rootMargin: string;
   observer: IntersectionObserver | null;
   lastActiveLinkId: string | null;
 };
 
-const MOBILE_THRESHOLD = 0.2;
-const DESKTOP_THRESHOLD = 0.5;
+const DESKTOP_MARGIN = "-100px 0px -80% 0px";
+const MOBILE_MARGIN = "-50px 0px -80% 0px";
 const BREAKPOINT_QUERY = "(min-width: 768px)";
 const ACTIVE_CLASS = "active";
 
@@ -51,13 +51,30 @@ function createNavHighlighter() {
 
     state.observer = new IntersectionObserver(
       (entries) => {
-        entries
-          .filter((entry) => entry.isIntersecting)
-          .forEach((entry) => {
-            highlightNavLink(entry.target.id, state);
-          });
+        const visibleEntries = entries.filter((entry) => entry.isIntersecting);
+        if (visibleEntries.length === 0) {
+          return;
+        }
+
+        const topMostSection =
+          visibleEntries.reduce<IntersectionObserverEntry | null>(
+            (best, current) => {
+              if (
+                !best ||
+                current.boundingClientRect.top < best.boundingClientRect.top
+              ) {
+                return current;
+              }
+              return best;
+            },
+            null,
+          );
+
+        if (topMostSection) {
+          highlightNavLink(topMostSection.target.id, state);
+        }
       },
-      { threshold: state.activeThreshold },
+      { threshold: 0, rootMargin: state.rootMargin },
     );
 
     sections.forEach((section) => {
@@ -72,7 +89,7 @@ function createNavHighlighter() {
       const isMobile = !mql.matches;
       const state: NavHighlighterState = {
         isMobile: isMobile,
-        activeThreshold: isMobile ? MOBILE_THRESHOLD : DESKTOP_THRESHOLD,
+        rootMargin: isMobile ? MOBILE_MARGIN : DESKTOP_MARGIN,
         observer: null,
         lastActiveLinkId: null,
       };
@@ -82,9 +99,7 @@ function createNavHighlighter() {
         // Update the observer only if required
         if (state.isMobile !== !e.matches) {
           state.isMobile = !e.matches;
-          state.activeThreshold = state.isMobile
-            ? MOBILE_THRESHOLD
-            : DESKTOP_THRESHOLD;
+          state.rootMargin = state.isMobile ? MOBILE_MARGIN : DESKTOP_MARGIN;
 
           setupObserver(state);
         }

@@ -33,12 +33,5 @@
     "name": "Projects",
     "section": "project-section",
     "icon": "code"
-  },
-  {
-    "navLink": "activity-nav-link",
-    "navLinkMob": "activity-nav-link-mob",
-    "name": "Activity",
-    "section": "activity-section",
-    "icon": "activity"
   }
 ]
