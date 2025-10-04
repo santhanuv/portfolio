@@ -1,1 +1,325 @@
 @import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-background: hsl(0 0% 100%);
+  --color-foreground: hsl(215 25% 12%);
+
+  /* Card system */
+  --color-card: hsl(0 0% 100%);
+  --color-card-foreground: hsl(215 25% 12%);
+  --color-card-hover: hsl(210 20% 98%);
+
+  /* Popover */
+  --color-popover: hsl(0 0% 100%);
+  --color-popover-foreground: hsl(215 25% 12%);
+
+  /* Brand teal accent */
+  --color-primary: hsl(173 80% 40%);
+  --color-primary-foreground: hsl(0 0% 100%);
+  --color-primary-muted: hsl(173 60% 95%);
+
+  /* Secondary gray system */
+  --color-secondary: hsl(210 15% 96%);
+  --color-secondary-foreground: hsl(215 25% 20%);
+
+  /* Muted content */
+  --color-muted: hsl(210 15% 96%);
+  --color-muted-foreground: hsl(215 12% 45%);
+
+  /* Accent highlights */
+  --color-accent: hsl(173 60% 95%);
+  --color-accent-foreground: hsl(173 80% 25%);
+
+  /* System colors */
+  --color-destructive: hsl(0 84% 60%);
+  --color-destructive-foreground: hsl(0 0% 100%);
+
+  /* Borders and inputs */
+  --color-border: hsl(215 15% 90%);
+  --color-input: hsl(215 15% 90%);
+  --color-ring: hsl(173 80% 40%);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 hsl(215 25% 12% / 0.05);
+  --shadow-md:
+    0 4px 6px -1px hsl(215 25% 12% / 0.1),
+    0 2px 4px -1px hsl(215 25% 12% / 0.06);
+  --shadow-lg:
+    0 10px 15px -3px hsl(215 25% 12% / 0.1),
+    0 4px 6px -2px hsl(215 25% 12% / 0.05);
+  --shadow-hover:
+    0 20px 25px -5px hsl(215 25% 12% / 0.1),
+    0 10px 10px -5px hsl(215 25% 12% / 0.04);
+
+  /* Custom keyframes */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+
+    @variant dark {
+      /* Core dark palette */
+      --color-background: hsl(215 25% 6%);
+      --color-foreground: hsl(210 20% 95%);
+
+      /* Card system */
+      --color-card: hsl(215 25% 8%);
+      --color-card-foreground: hsl(210 20% 95%);
+      --color-card-hover: hsl(215 25% 10%);
+
+      /* Popover */
+      --color-popover: hsl(215 25% 8%);
+      --color-popover-foreground: hsl(210 20% 95%);
+
+      /* Brand teal accent - adjusted for dark */
+      --color-primary: hsl(173 70% 50%);
+      --color-primary-foreground: hsl(215 25% 6%);
+      --color-primary-muted: hsl(173 40% 15%);
+
+      /* Secondary system */
+      --color-secondary: hsl(215 20% 12%);
+      --color-secondary-foreground: hsl(215 20% 85%);
+
+      /* Muted content */
+      --color-muted: hsl(215 20% 12%);
+      --color-muted-foreground: hsl(215 12% 55%);
+
+      /* Accent highlights */
+      --color-accent: hsl(173 40% 15%);
+      --color-accent-foreground: hsl(173 70% 60%);
+
+      /* System colors */
+      --color-destructive: hsl(0 75% 55%);
+      --color-destructive-foreground: hsl(210 20% 95%);
+
+      /* Borders and inputs */
+      --color-border: hsl(215 20% 15%);
+      --color-input: hsl(215 20% 15%);
+      --color-ring: hsl(173 70% 50%);
+    }
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: "InterVariable", "Inter", system-ui, sans-serif;
+    @apply scroll-p-15;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  section {
+    @apply section-spacing py-20;
+  }
+
+  p {
+    @apply text-base;
+  }
+}
+
+@utility bg-gradient-primary {
+  background: linear-gradient(135deg, hsl(173 80% 40%), hsl(173 70% 45%));
+}
+
+@utility bg-gradient-secondary {
+  background: linear-gradient(135deg, hsl(210 15% 98%), hsl(210 15% 96%));
+}
+
+@utility bg-gradient-hero {
+  background: linear-gradient(135deg, hsl(0 0% 100%), hsl(210 20% 98%));
+}
+
+@utility bg-gradient-primary-dark {
+  background: linear-gradient(
+    135deg,
+    hsl(173 70% 50%) 0%,
+    hsl(173 60% 55%) 100%
+  );
+}
+
+@utility bg-gradient-secondary-dark {
+  background: linear-gradient(
+    135deg,
+    hsl(215 25% 8%) 0%,
+    hsl(215 20% 12%) 100%
+  );
+}
+
+@utility bg-gradient-hero-dark {
+  background: linear-gradient(135deg, hsl(215 25% 6%) 0%, hsl(215 25% 8%) 100%);
+}
+
+@utility text-gradient {
+  @apply from-primary to-primary/80 bg-gradient-to-r bg-clip-text text-transparent;
+}
+
+@utility btn {
+  @apply focus-visible:ring-ring inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg font-medium whitespace-nowrap transition-all duration-300 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0;
+}
+
+@utility badge {
+  @apply focus:ring-ring inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:ring-2 focus:ring-offset-2 focus:outline-none;
+}
+
+@utility container-spacing {
+  @apply mx-auto max-w-6xl;
+}
+
+@utility section-spacing {
+  @apply px-6 sm:px-8 lg:px-12 xl:px-16;
+}
+
+@layer components {
+  .navbar-item {
+    @apply hover:text-foreground hover:bg-accent text-muted-foreground gap-2 transition-all duration-200;
+  }
+
+  .navbar-item.active {
+    @apply bg-primary text-primary-foreground;
+  }
+
+  @variant sm {
+    .navbar-item {
+      @apply text-muted-foreground transition-all duration-200;
+    }
+
+    .active {
+      @apply bg-primary/10 text-primary;
+    }
+  }
+
+  .icon {
+    @apply h-4 w-4;
+  }
+
+  .icon-md {
+    @apply h-5 w-5;
+  }
+
+  .tag {
+    @apply bg-primary-muted text-accent-foreground border-border/50 hover:border-primary/30 flex items-center justify-center rounded-lg border px-4 py-3 text-sm font-medium transition-colors;
+  }
+
+  .btn-default {
+    @apply btn bg-primary text-primary-foreground hover:bg-primary/90 shadow-md hover:shadow-lg;
+  }
+
+  .btn-destructive {
+    @apply btn bg-destructive text-destructive-foreground hover:bg-destructive/90 shadow-md;
+  }
+
+  .btn-outline {
+    @apply btn border-border bg-background text-foreground hover:bg-accent hover:text-accent-foreground border shadow-sm;
+  }
+
+  .btn-secondary {
+    @apply btn bg-secondary text-secondary-foreground hover:bg-secondary/80 shadow-sm;
+  }
+
+  .btn-ghost {
+    @apply btn hover:bg-accent hover:text-accent-foreground;
+  }
+
+  @variant sm {
+    .btn-ghost {
+      @apply btn;
+    }
+  }
+
+  .btn-link {
+    @apply btn text-primary underline-offset-4 hover:underline;
+  }
+
+  .btn-hero {
+    @apply btn bg-gradient-primary text-primary-foreground hover:shadow-hover shadow-lg transition-all duration-300 hover:scale-105;
+  }
+
+  .btn-professional {
+    @apply btn bg-card border-border text-card-foreground hover:bg-card-hover hover:border-primary/20 border shadow-sm hover:shadow-md;
+  }
+
+  /*
+    Size styles. Apply these classes in addition to the base and variant classes.
+  */
+  .btn-size-default {
+    @apply h-10 px-4 py-2 text-sm;
+  }
+
+  .btn-size-sm {
+    @apply h-8 rounded-md px-3 text-xs;
+  }
+
+  .btn-size-lg {
+    @apply h-12 rounded-lg px-8 text-base;
+  }
+
+  .btn-size-xl {
+    @apply h-14 rounded-lg px-10 text-lg;
+  }
+
+  .btn-size-icon {
+    @apply h-10 w-10;
+  }
+
+  .card {
+    @apply bg-card text-card-foreground border-border/50 hover:border-primary/30 rounded-lg border shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg;
+  }
+
+  .card-header {
+    @apply flex flex-col space-y-1.5 p-6;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:scale-[1.02] hover:shadow-lg;
+  }
+
+  .card-title {
+    @apply leading-none font-semibold tracking-tight;
+  }
+
+  .card-content {
+    @apply p-6 pt-0;
+  }
+
+  .badge-secondary {
+    @apply badge bg-secondary text-secondary-foreground hover:bg-secondary/80 border-transparent;
+  }
+
+  .badge-outline {
+    @apply badge text-foreground;
+  }
+
+  /* Animation utilities */
+  .fade-in {
+    @apply animate-[fadeIn_0.6s_ease-out_forwards];
+  }
+
+  .slide-up {
+    @apply animate-[slideUp_0.8s_ease-out_forwards];
+  }
+}
