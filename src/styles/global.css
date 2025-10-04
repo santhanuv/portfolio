@@ -3,6 +3,8 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
+  --font-sans: "Inter", "sans-serif";
+
   --color-background: hsl(0 0% 100%);
   --color-foreground: hsl(215 25% 12%);
 
@@ -125,7 +127,7 @@
 
   html {
     scroll-behavior: smooth;
-    font-family: "InterVariable", "Inter", system-ui, sans-serif;
+    font-family: "Inter Variable", "Inter", system-ui, sans-serif;
     @apply scroll-p-15;
   }
 
