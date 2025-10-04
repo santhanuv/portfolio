@@ -1,0 +1,92 @@
+---
+interface Props {
+  title: string;
+  building?: string;
+  location?: string;
+  role?: string;
+  category?: string;
+  period?: string;
+  tag?: string;
+  externalLink?: string;
+}
+
+import { Icon } from "astro-icon/components";
+
+const {
+  title,
+  location = null,
+  building = null,
+  role = null,
+  category = null,
+  period = null,
+  tag = null,
+  externalLink = null,
+} = Astro.props;
+
+const subInfos = [
+  { icon: "building", value: building },
+  { icon: "map-pin", value: location },
+  { icon: "award", value: role },
+  { icon: "folder", value: category },
+];
+
+const isSepRequired = subInfos.filter((s) => s.value !== null).length > 1;
+---
+
+<div class="card-header pb-4">
+  <div
+    class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between"
+  >
+    <div class="space-y-1">
+      <h5
+        class="text-foreground group-hover:text-primary text-xl font-semibold transition-colors"
+      >
+        {title}
+      </h5>
+      <div class="text-muted-foreground flex items-center gap-2">
+        {
+          subInfos.map((e, i) => {
+            if (!e.value) return;
+
+            return (
+              <Fragment>
+                {i !== 0 && isSepRequired && (
+                  <span class="text-muted-foreground/60">•</span>
+                )}
+                <Icon name={e.icon} class="icon" aria-hidden="true" />
+                <span class="font-medium">{e.value}</span>
+              </Fragment>
+            );
+          })
+        }
+      </div>
+    </div>
+    <div class="flex items-center gap-2 text-sm">
+      {
+        period && (
+          <Fragment>
+            <Icon
+              name="calendar"
+              class="icon text-muted-foreground"
+              aria-hidden="true"
+            />
+            <span class="text-foreground font-medium">{period}</span>
+          </Fragment>
+        )
+      }
+      {tag && <div class="badge-secondary ml-2 px-3 py-1">{tag}</div>}
+      {
+        externalLink && (
+          <a
+            href={externalLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-ghost btn-size-icon opacity-0 transition-opacity group-hover:opacity-100"
+          >
+            <Icon name="external-link" class="icon" />
+          </a>
+        )
+      }
+    </div>
+  </div>
+</div>

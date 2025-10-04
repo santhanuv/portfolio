@@ -289,7 +289,7 @@
   }
 
   .card {
-    @apply bg-card text-card-foreground border-border/50 hover:border-primary/30 rounded-lg border shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg;
+    @apply bg-card text-card-foreground border-border/50 hover:border-primary/30 cursor-pointer rounded-lg border shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg;
   }
 
   .card-header {

@@ -1,0 +1,192 @@
+---
+interface Props {
+  id: string;
+  description: string;
+  pointsHeader?: string;
+  points?: string[];
+  technologies?: string[];
+  initialCount?: number;
+}
+
+const {
+  id,
+  description,
+  pointsHeader: subtitle = null,
+  points = [],
+  technologies = [],
+  initialCount = 4,
+} = Astro.props;
+
+const visiblePoints = points.slice(0, initialCount);
+const hiddenPoints = points.slice(initialCount);
+
+const isExpandable = hiddenPoints.length > 0;
+const cardId = `card-${id}`;
+const hiddenListParentId = `${cardId}-hidden-points`;
+const expandTextId = `${cardId}-expand-text`;
+const collapseTextId = `${cardId}-collapse-text`;
+---
+
+<astro-card
+  data-is-expandable={isExpandable}
+  data-card-id={cardId}
+  data-hidden-list-parent-id={hiddenListParentId}
+  data-expand-text-id={expandTextId}
+  data-collapse-text-id={collapseTextId}
+>
+  <div
+    id={cardId}
+    class="card card-hover group"
+    role="button"
+    tabindex="0"
+    aria-expanded="false"
+    aria-controls={hiddenListParentId}
+    aria-label="Expand or collapse details"
+  >
+    <slot name="header" />
+    <div class="space-y-4 p-6 pt-6">
+      <p class="text-foreground/90 text-base leading-relaxed">
+        {description}
+      </p>
+
+      <div class="space-y-3">
+        {
+          subtitle && (
+            <h6 class="text-foreground text-md font-medium">{subtitle}</h6>
+          )
+        }
+        <ul class="space-y-4">
+          {
+            visiblePoints.map((achievement) => (
+              <li class="text-muted-foreground flex items-start gap-2 text-sm">
+                <span
+                  class="bg-primary mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full"
+                  aria-hidden="true"
+                />
+                <span>{achievement}</span>
+              </li>
+            ))
+          }
+          <div
+            id={hiddenListParentId}
+            class="fade-in hidden"
+            aria-live="polite"
+          >
+            <ul class="space-y-4">
+              {
+                hiddenPoints.map((achievement) => (
+                  <li class="text-muted-foreground flex items-start gap-2 text-sm">
+                    <span
+                      aria-hidden="true"
+                      class="bg-primary mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full"
+                    />
+                    <span>{achievement}</span>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </ul>
+      </div>
+
+      <div class="space-y-3">
+        {
+          technologies.length > 0 && (
+            <h6 class="text-foreground text-md font-medium">Technologies</h6>
+          )
+        }
+        <div class="flex flex-wrap gap-2">
+          {
+            technologies.map((tech) => (
+              <div class="badge-secondary px-3 py-1 text-sm">{tech}</div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="px-6 pt-0 pb-6">
+      <slot name="footer" />
+      {
+        isExpandable && (
+          <div>
+            <p
+              id={expandTextId}
+              class="text-muted-foreground group-hover:text-primary text-center text-sm"
+            >
+              show more
+            </p>
+            <p
+              id={collapseTextId}
+              class="text-muted-foreground group-hover:text-primary hidden text-center text-sm"
+            >
+              show less
+            </p>
+          </div>
+        )
+      }
+    </div>
+  </div>
+</astro-card>
+
+<script>
+  class Card extends HTMLElement {
+    connectedCallback() {
+      const isExpandable = this.dataset.isExpandable;
+      if (!isExpandable) return;
+
+      const cardId = this.dataset.cardId;
+      const hiddenListParentId = this.dataset.hiddenListParentId;
+      const expandTextId = this.dataset.expandTextId;
+      const collapseTextId = this.dataset.collapseTextId;
+
+      handleCardExpansion(
+        cardId,
+        hiddenListParentId,
+        expandTextId,
+        collapseTextId,
+      );
+    }
+  }
+
+  function handleCardExpansion(
+    cardId: string | undefined,
+    hiddenListParentId: string | undefined,
+    expandTextId: string | undefined,
+    collapseTextId: string | undefined,
+  ) {
+    if (!cardId || !hiddenListParentId) return;
+    const cardElement = document.getElementById(cardId);
+    const hiddenListParent = document.getElementById(hiddenListParentId);
+    if (cardElement === null || hiddenListParent === null) return;
+
+    const expandText = expandTextId
+      ? document.getElementById(expandTextId)
+      : null;
+    const collapseText = collapseTextId
+      ? document.getElementById(collapseTextId)
+      : null;
+
+    cardElement.addEventListener("click", (e) => {
+      if (e.target instanceof HTMLElement) {
+        const clickedTag = e.target.tagName;
+        if (clickedTag === "A" || clickedTag === "BUTTON") {
+          return;
+        }
+      }
+
+      const isHidden = hiddenListParent.classList.toggle("hidden");
+      cardElement.setAttribute("aria-expanded", isHidden ? "false" : "true");
+
+      if (expandText) {
+        expandText.classList.toggle("hidden");
+      }
+
+      if (collapseText) {
+        collapseText.classList.toggle("hidden");
+      }
+    });
+  }
+
+  customElements.define("astro-card", Card);
+</script>
