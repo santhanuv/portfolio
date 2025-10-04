@@ -18,5 +18,51 @@
   ],
   "mainSummary": "Maintainer of GitLab's vSphere fleeting plugin and contributor to Gitaly (Git RPC service). Building event-driven systems with Kafka, saga patterns, and event sourcing in production.",
   "subSummary": "Demonstrated Go proficiency through maintained OSS tooling and merged contributions to one of the largest Go codebases. Seeking remote Go distributed systems roles.",
-  "statsSummary": [{ "value": ".NET → Go", "label": "Active Transition" }]
+  "statsSummary": [{ "value": ".NET → Go", "label": "Active Transition" }],
+
+  "experiences": [
+    {
+      "role": "Software Engineer",
+      "company": "QBurst",
+      "location": "India",
+      "period": "Sep 2023 – Present",
+      "type": "Full-time",
+      "description": "Software engineer building reliable distributed systems, backend services, and cloud infrastructure. Professionally experienced in .NET, focused on event-driven architectures, scalable service design, and cloud-native patterns.",
+      "achievements": [
+        "Implemented event sourcing with MongoDB, storing full snapshots and calculating deltas between them for analytics and tracking",
+        "Designed and maintained a distributed mail service using Kafka, PostgreSQL, and MailKit, supporting multiple backend providers with secure credential management",
+        "Architected and integrated WorkflowCore orchestration, enabling complex distributed workflows with saga patterns and custom retry mechanisms",
+        "Integrated Keycloak-based user access management for multi-tenant environments, ensuring secure gRPC inter-service communication",
+        "Secured and optimized Azure-based SaaS deployments through VNet segmentation, private endpoints, and Function App integrations while managing cost efficiency",
+        "Delivered backend APIs and frontends leveraging schema-driven development with MongoDB and PostgreSQL, supporting advanced business rule validations",
+        "Containerized and orchestrated backend services with Docker to streamline deployments and ensure environment consistency",
+        "Developed and managed GitLab CI/CD pipelines with multi-stage deployments, reducing manual release overhead and improving delivery speed"
+      ],
+      "technologies": [
+        "Kafka",
+        "MongoDB",
+        "PostgreSQL",
+        "SignalR",
+        "GitLab CI/CD",
+        "Docker",
+        "Azure",
+        "Keycloak",
+        "WorkflowCore",
+        "MailKit",
+        "C#",
+        "ASP.NET Core",
+        "Angular"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "B.Tech in Computer Science",
+      "school": "Saintgits College of Engineering",
+      "location": "India",
+      "period": "2019 – 2023",
+      "focus": "Specialized in Computer Science & Engineering",
+      "description": "Focused on foundational computer science concepts, distributed algorithms, and systems design, preparing for a career in backend and distributed systems engineering."
+    }
+  ]
 }
