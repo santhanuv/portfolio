@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import { profileLinks } from "../data/profile.json";
 ---
 
 <footer
@@ -42,7 +43,7 @@ import { Icon } from "astro-icon/components";
         <div class="flex justify-center gap-3 pt-4">
           <a
             class="btn-outline btn-size-icon"
-            href="https://github.com/yourusername"
+            href={profileLinks.github}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub Profile"
@@ -51,7 +52,7 @@ import { Icon } from "astro-icon/components";
           </a>
           <a
             class="btn-outline btn-size-icon"
-            href="https://gitlab.com/yourusername"
+            href={profileLinks.gitlab}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitLab Profile"
@@ -60,7 +61,7 @@ import { Icon } from "astro-icon/components";
           </a>
           <a
             class="btn-outline btn-size-icon"
-            href="https://linkedin.com/in/yourprofile"
+            href={profileLinks.linkedin}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn Profile"
