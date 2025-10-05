@@ -2,46 +2,46 @@
   {
     "icon": "layers",
     "title": "Distributed Systems Architecture",
-    "description": "2+ years building event-driven systems with Kafka, saga patterns, event sourcing, and workflow orchestration in production using .NET"
+    "description": "Over 2 years of experience building event-driven systems with Kafka, saga patterns, event sourcing, and workflow orchestration in production using .NET"
   },
   {
     "icon": "code",
     "title": "GitLab OSS Maintainer & Contributor",
-    "description": "Maintainer of vSphere fleeting plugin and contributor to Gitaly (Git RPC service) with merged MRs in one of the largest Go codebases"
+    "description": "Maintainer of the vSphere fleeting plugin and contributor to Gitaly, the Git RPC service powering GitLab. Merged MRs in one of the largest Go codebases"
   },
   {
     "icon": "settings",
     "title": "Cloud-Native Infrastructure",
-    "description": "Production experience with Docker, Kubernetes, GitLab CI/CD, Azure deployments, and observability tooling"
+    "description": "Hands-on experience with Docker, Kubernetes, GitLab CI/CD, and Azure cloud deployments, with strong focus on observability and reliability"
   },
   {
     "icon": "trending-up",
     "title": "Go Ecosystem",
-    "description": "Built CLI tools in Go, contributed to GitLab's Go codebase, and maintained production Go tooling. Transitioning from .NET to Go"
+    "description": "Built CLI tools in Go, contributed to GitLab’s Go codebase, and maintained production-grade Go tooling. Transitioning from .NET to Go for distributed systems development"
   },
   {
     "icon": "zap",
     "title": "Real-Time & Streaming Systems",
-    "description": "Implemented Kafka-based event streaming, SignalR real-time dashboards, and distributed workflow monitoring with recovery mechanisms"
+    "description": "Implemented Kafka-based event streaming, SignalR-powered real-time dashboards, and distributed workflow monitoring with recovery mechanisms"
   },
   {
     "icon": "users",
     "title": "Remote-First Engineering",
-    "description": "Experienced with async OSS collaboration (GitLab), distributed teams, and remote workflows"
+    "description": "Experienced in asynchronous OSS collaboration, distributed teams, and remote workflows through contributions to GitLab and community projects"
   },
   {
     "icon": "layers",
     "title": "End-to-End Delivery",
-    "description": "Can ship complete features across the stack when needed (React, Angular, .NET). Enables faster iteration in small team environments"
+    "description": "Capable of shipping complete features across the stack—from backend services to front-end interfaces—enabling rapid iteration in small, agile teams"
   },
   {
     "icon": "database",
     "title": "Data Layer Expertise",
-    "description": "PostgreSQL, MongoDB (replica sets, aggregation pipelines), Redis, and event store implementations with encryption and multi-tenancy"
+    "description": "PostgreSQL, MongoDB with replica sets and aggregation pipelines, Redis, and custom event stores with encryption and multi-tenancy"
   },
   {
     "icon": "terminal",
     "title": "Linux Comfort",
-    "description": "Daily Linux user fluent in command-line workflows, debugging production systems, and building CLI tooling. Comfortable working in terminal-first environments"
+    "description": "Daily Linux user fluent in command-line workflows, production debugging, and CLI development. Excels in terminal-first engineering environments"
   }
 ]

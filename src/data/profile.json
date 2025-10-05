@@ -16,9 +16,15 @@
     "PostgreSQL",
     "Docker & K8s"
   ],
-  "mainSummary": "Maintainer of GitLab's vSphere fleeting plugin and contributor to Gitaly (Git RPC service). Building event-driven systems with Kafka, saga patterns, and event sourcing in production.",
+  "mainSummary": "Maintainer of GitLab’s vSphere Fleeting plugin and contributor to Gitaly, GitLab’s RPC service. Building event-driven systems with Kafka, saga patterns, and event sourcing in production.",
   "subSummary": "Demonstrated Go proficiency through maintained OSS tooling and merged contributions to one of the largest Go codebases. Seeking remote Go distributed systems roles.",
-  "statsSummary": [{ "value": ".NET → Go", "label": "Active Transition" }],
+  "statsSummary": [
+    { "value": ".NET → Go", "label": "Active Transition" },
+    {
+      "value": "Level 2",
+      "label": "GitLab Contributor"
+    }
+  ],
 
   "experiences": [
     {
