@@ -30,7 +30,25 @@ import { profileLinks } from "../data/profile.json";
         <form
           class="mx-auto max-w-xl space-y-6"
           aria-labelledby="contact-form-title"
+          action="/contact"
+          method="POST"
         >
+          <div>
+            <label
+              for="name"
+              class="text-foreground mx-1 mb-2 block text-left text-sm leading-6 font-medium"
+            >
+              Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Enter your name"
+              required
+              class="bg-background text-foreground border-input focus:border-primary focus:ring-primary dark:focus:border-primary-dark h-12 w-full rounded-lg border px-4 py-2 shadow-sm transition-colors duration-200 focus:ring-1"
+            />
+          </div>
           <div>
             <label
               for="email"
@@ -64,15 +82,23 @@ import { profileLinks } from "../data/profile.json";
               class="bg-background text-foreground border-input focus:border-primary focus:ring-primary dark:focus:border-primary-dark w-full resize-none rounded-lg border px-4 py-3 shadow-sm transition-colors duration-200 focus:ring-1"
             ></textarea>
           </div>
-
+          <div
+            class="cf-turnstile"
+            data-sitekey={import.meta.env.PUBLIC_TURNSTILE_SITE_KEY}
+          >
+          </div>
           {/* Primary CTA */}
           <div
             class="flex flex-col justify-center gap-4 sm:flex-row sm:items-center"
           >
-            <a class="btn-hero btn-size-lg grow" aria-label="Send Email">
+            <button
+              class="btn-hero btn-size-lg grow"
+              aria-label="Send Email"
+              type="submit"
+            >
               <Icon name="mail" class="mr-2 h-4 w-4" />
               Send
-            </a>
+            </button>
             <a
               class="btn-outline btn-size-lg"
               href="Santhanu_Vinod_Resume.pdf"
@@ -135,3 +161,6 @@ import { profileLinks } from "../data/profile.json";
     </div>
   </div>
 </footer>
+
+<script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+></script>
