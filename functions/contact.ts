@@ -98,6 +98,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
       },
     );
   } catch (e) {
+    console.error("failed to process formdata: ", e);
     return new Response(
       JSON.stringify({
         success: false,
