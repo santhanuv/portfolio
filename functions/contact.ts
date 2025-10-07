@@ -78,13 +78,15 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     contactFormData.append("email", email);
     contactFormData.append("message", message);
 
+    const contactFormbody = JSON.stringify(Object.fromEntries(formData));
+
     const response = await fetch(context.env.FORM_BACKEND_URI, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-      body: contactFormData,
+      body: contactFormbody,
     });
 
     const result = (await response.json()) as any;
