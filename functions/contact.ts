@@ -80,6 +80,10 @@ export const onRequest: PagesFunction<Env> = async (context) => {
 
     const response = await fetch(context.env.FORM_BACKEND_URI, {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
       body: contactFormData,
     });
 
