@@ -81,8 +81,6 @@ export const onRequest: PagesFunction<Env> = async (context) => {
 
     const contactFormReq = JSON.stringify(Object.fromEntries(contactFormData));
 
-    // REMOVE THIS
-    console.log("for testing: ", contactFormReq);
     const response = await fetch(context.env.FORM_BACKEND_URI, {
       method: "POST",
       headers: {
@@ -92,8 +90,8 @@ export const onRequest: PagesFunction<Env> = async (context) => {
       body: contactFormReq,
     });
 
+    console.log("form backend responded with ", response);
     const result = (await response.json()) as any;
-    console.log("form data sent with status ", response.status, result);
 
     const isFormSuccess = response.status === 200 && result?.success === true;
     return new Response(
