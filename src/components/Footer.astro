@@ -27,11 +27,23 @@ import { profileLinks } from "../data/profile.json";
           </p>
         </div>
 
+        <div id="toast" class="hidden" role="alert" aria-live="assertive">
+          <Icon
+            name="circle-check-big"
+            class="icon hidden shrink-0 md:h-5 md:w-5"
+            id="toast-success-icon"
+          />
+          <Icon
+            name="circle-alert"
+            class="icon hidden shrink-0 md:h-5 md:w-5"
+            id="toast-fail-icon"
+          />
+          <div id="toast-content" class="text-white"></div>
+        </div>
         <form
+          id="contact-form"
           class="mx-auto max-w-xl space-y-6"
           aria-labelledby="contact-form-title"
-          action="/contact"
-          method="POST"
         >
           <div>
             <label
@@ -95,6 +107,7 @@ import { profileLinks } from "../data/profile.json";
               class="btn-hero btn-size-lg grow"
               aria-label="Send Email"
               type="submit"
+              id="form-submit-button"
             >
               <Icon name="mail" class="mr-2 h-4 w-4" />
               Send
@@ -162,5 +175,6 @@ import { profileLinks } from "../data/profile.json";
   </div>
 </footer>
 
+<script src="../scripts/contact-form.ts"></script>
 <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js"
 ></script>

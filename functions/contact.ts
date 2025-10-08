@@ -190,8 +190,8 @@ function generateMailHtml(
   return `<div>
     <p>Hi,</p>
     <p>A new form submission from portfolio. Details below:</p>
-    <h3>Name: </h3><br /><p>${name}</p>
-    <h3>Email: </h3><br /><p>${contactEmail}</p>
-    <h3>Message: </h3><br /><p>${message}</p>
+    <h3>Name: </h3><p>${name}</p>
+    <h3>Email: </h3><p>${contactEmail}</p>
+    <h3>Message: </h3><p>${message}</p>
   </div>`;
 }

@@ -36,6 +36,7 @@
 
   /* System colors */
   --color-destructive: hsl(0 84% 60%);
+  --color-destructive-muted: hsl(5 81% 40%);
   --color-destructive-foreground: hsl(0 0% 100%);
 
   /* Borders and inputs */
@@ -225,6 +226,14 @@
 
   .tag {
     @apply bg-primary-muted text-accent-foreground border-border/50 hover:border-primary/30 flex items-center justify-center rounded-lg border px-4 py-3 text-sm font-medium transition-colors;
+  }
+
+  .toast-success {
+    @apply bg-primary-muted border-primary fixed top-25 right-5 flex max-w-xs items-center justify-start gap-4 rounded-md border p-4 text-left opacity-80 md:w-full md:max-w-md;
+  }
+
+  .toast-fail {
+    @apply bg-destructive-muted border-destructive fixed top-25 right-5 flex max-w-xs items-center justify-start gap-4 rounded-md border p-4 text-left opacity-80 md:w-full md:max-w-md;
   }
 
   .btn-default {
