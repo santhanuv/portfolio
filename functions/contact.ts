@@ -71,6 +71,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
         },
       );
     }
+    console.log("completed turnstile verification");
 
     const contactFormData = new FormData();
     contactFormData.append("access_key", context.env.FORMS_KEY);
