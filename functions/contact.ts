@@ -92,7 +92,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     const resend = new Resend(context.env.FORMS_KEY);
 
     const { data, error } = await resend.emails.send({
-      from: "Portfolio santhanu-vinod.pages.dev",
+      from: "Portfolio <onboarding@resend.dev>",
       to: [context.env.RECIPIENT_EMAIL_ADDR],
       subject: "Notification from portfolio",
       html: generateMailHtml(name, email, message),
