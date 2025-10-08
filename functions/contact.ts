@@ -90,7 +90,6 @@ export const onRequest: PagesFunction<Env> = async (context) => {
       body: contactFormReq,
     });
 
-    console.log("form backend responded with ", response);
     const result = (await response.json()) as any;
 
     const isFormSuccess = response.status === 200 && result?.success === true;
