@@ -1,7 +1,9 @@
+import { Resend } from "resend";
+
 interface Env {
   FORMS_KEY: string;
-  FORM_BACKEND_URI: string;
   TURNSTILE_SECRET_KEY: string;
+  RECIPIENT_EMAIL_ADDR: string;
 }
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -73,33 +75,45 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     }
     console.log("completed turnstile verification");
 
-    const contactFormData = new FormData();
-    contactFormData.append("access_key", context.env.FORMS_KEY);
-    contactFormData.append("name", name);
-    contactFormData.append("email", email);
-    contactFormData.append("message", message);
+    if (!context.env.RECIPIENT_EMAIL_ADDR) {
+      return new Response(
+        JSON.stringify({
+          success: false,
+          message:
+            "Contact form is not supported right now. Please connect through LinkedIn",
+        }),
+        {
+          status: 500,
+          headers: { "Content-Type": "application/json" },
+        },
+      );
+    }
 
-    const contactFormReq = JSON.stringify(Object.fromEntries(contactFormData));
+    const resend = new Resend(context.env.FORMS_KEY);
 
-    const response = await fetch(context.env.FORM_BACKEND_URI, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: contactFormReq,
+    const { data, error } = await resend.emails.send({
+      from: "Portfolio santhanu-vinod.pages.dev",
+      to: [context.env.RECIPIENT_EMAIL_ADDR],
+      subject: "Notification from portfolio",
+      html: generateMailHtml(name, email, message),
     });
+    const isFormSubSuccess = error === null;
 
-    const result = (await response.json()) as any;
+    if (isFormSubSuccess) {
+      console.log(`mail notification send with id: '${data?.id}'`);
+    } else {
+      console.log(
+        `failed to send mail notification: error name: '${error.name}' with error message: '${error.message}'`,
+      );
+    }
 
-    const isFormSuccess = response.status === 200 && result?.success === true;
     return new Response(
       JSON.stringify({
-        success: isFormSuccess,
-        message: isFormSuccess ? FORM_SUCCESS_MSG : FORM_FAIL_MSG,
+        success: isFormSubSuccess,
+        message: isFormSubSuccess ? FORM_SUCCESS_MSG : FORM_FAIL_MSG,
       }),
       {
-        status: response.status,
+        status: isFormSubSuccess ? 200 : 500,
         headers: { "Content-Type": "application/json" },
       },
     );
@@ -166,4 +180,18 @@ async function validateTurnstile(
     console.error("Turnstile validation error:", error);
     return false;
   }
+}
+
+function generateMailHtml(
+  name: string,
+  contactEmail: string,
+  message: string,
+): string {
+  return `<div>
+    <p>Hi,</p>
+    <p>A new form submission from portfolio. Details below:</p>
+    <h3>Name: </h3><br /><p>${name}</p>
+    <h3>Email: </h3><br /><p>${contactEmail}</p>
+    <h3>Message: </h3><br /><p>${message}</p>
+  </div>`;
 }
