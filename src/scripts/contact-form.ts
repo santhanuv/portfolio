@@ -53,7 +53,8 @@ function showToast(message: string, success = true) {
   }
   toastSuccessIcon.classList.add("hidden");
   toastFailIcon.classList.add("hidden");
-  toast.classList.add("hidden", "toast-success", "toast-fail");
+  toast.classList.add("hidden");
+  toast.classList.remove("toast-success", "toast-fail");
 
   toastContent.textContent = message;
 
