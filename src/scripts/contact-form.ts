@@ -12,6 +12,7 @@ const toastFailIcon = document.getElementById(
 ) as HTMLDivElement;
 
 if (contactForm) {
+  contactForm.reset();
   contactForm.addEventListener("submit", handleFormSubmission);
 }
 
