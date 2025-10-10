@@ -78,7 +78,8 @@ function showToast(message: string, success = true) {
   }
 }
 
-function enableFormSubmitBtn() {
+function enableFormSubmitBtn(token: string) {
+  console.log(formSubmitBtn, token);
   if (!formSubmitBtn) return;
 
   formSubmitBtn.disabled = false;
