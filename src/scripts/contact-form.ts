@@ -77,3 +77,9 @@ function showToast(message: string, success = true) {
     }, 5000);
   }
 }
+
+function enableFormSubmitBtn() {
+  if (!formSubmitBtn) return;
+
+  formSubmitBtn.disabled = false;
+}
