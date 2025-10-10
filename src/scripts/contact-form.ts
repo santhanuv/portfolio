@@ -1,3 +1,20 @@
+export {};
+
+declare global {
+  interface Window {
+    enableFormSubmitBtn: (token: string) => void;
+    turnstile: {
+      reset: (containerId?: string) => void; // containerId is optional if only one widget
+    };
+  }
+}
+
+window.enableFormSubmitBtn = (_) => {
+  if (!formSubmitBtn) return;
+
+  formSubmitBtn.disabled = false;
+};
+
 const contactForm = document.getElementById("contact-form") as HTMLFormElement;
 const formSubmitBtn = document.getElementById(
   "form-submit-button",
@@ -45,6 +62,10 @@ async function handleFormSubmission(e: SubmitEvent) {
     );
   } finally {
     formSubmitBtn.disabled = false;
+
+    if (typeof window.turnstile !== "undefined") {
+      window.turnstile.reset("cf-turnstile");
+    }
   }
 }
 
@@ -76,15 +97,4 @@ function showToast(message: string, success = true) {
       toast.classList.add("hidden");
     }, 5000);
   }
-}
-
-function errorLog(err: string) {
-  console.error(err);
-}
-
-function enableFormSubmitBtn(token: string) {
-  console.log(formSubmitBtn, token);
-  if (!formSubmitBtn) return;
-
-  formSubmitBtn.disabled = false;
 }
