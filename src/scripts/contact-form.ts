@@ -78,6 +78,10 @@ function showToast(message: string, success = true) {
   }
 }
 
+function errorLog(err: string) {
+  console.error(err);
+}
+
 function enableFormSubmitBtn(token: string) {
   console.log(formSubmitBtn, token);
   if (!formSubmitBtn) return;
