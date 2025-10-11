@@ -2,8 +2,7 @@
 
 This repository contains the source code for my **personal portfolio** [website](https://santhanu-vinod.pages.dev). It is built using **Astro**, **Tailwind CSS**, and **TypeScript**, and deployed on **Cloudflare Pages**.
 
-The portfolio presents my projects, experience, and information as a **software engineer**.  
-It includes a contact form that uses **Cloudflare Turnstile** for verification and **Resend** for sending email notifications through Cloudflare Functions.
+The portfolio presents my projects, experience, and information as a **software engineer**. It includes a contact form that uses **Cloudflare Turnstile** for verification and **Resend** for sending email notifications through Cloudflare Functions.
 
 ---
 
