@@ -92,7 +92,7 @@
       "description": "Contributed to GitLab’s core Git storage gRPC service, powering distributed systems and ensuring reliable repository operations.",
       "type": "Reliability & Maintainability Improvements",
       "highlights": [
-        "Fixed missing error handling in ReadMonitor for SSHArchive/SSHUpload, preventing silent failures and ensuring robust logging",
+        "Fixed critical observability gap in SSH-based Git operations (clone, fetch, archive), adding error handling that prevented silent failures",
         "Implemented bottom-up reflection-based config serialization, making Gitaly’s config struct the single source of truth",
         "Explored AST-based top-down approach for config documentation generation, improving maintainability",
         "Proposed and implemented Git refs verification in housekeeping with Prometheus metrics, enhancing monitoring and reliability"
