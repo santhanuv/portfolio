@@ -12,11 +12,11 @@
     "Go",
     "Kafka",
     "gRPC",
-    "Event Sourcing",
+    "MongoDB",
     "PostgreSQL",
     "Docker & K8s"
   ],
-  "mainSummary": "Maintainer of GitLab’s vSphere Fleeting plugin and contributor to Gitaly, GitLab’s RPC service. Building event-driven systems with Kafka, saga patterns, and event sourcing in production.",
+  "mainSummary": "Maintainer of GitLab’s vSphere Fleeting plugin and contributor to Gitaly, GitLab’s RPC service. Build event-driven, fault-tolerant systems using Kafka, saga orchestration, and event stores in production environments.",
   "subSummary": "Demonstrated Go proficiency through maintained OSS tooling and merged contributions to one of the largest Go codebases. Seeking Go distributed systems roles.",
   "statsSummary": [
     { "value": ".NET → Go", "label": "Active Transition" },
@@ -35,7 +35,7 @@
       "type": "Full-time",
       "description": "Software engineer building reliable distributed systems, backend services, and cloud infrastructure. Professionally experienced in .NET, focused on event-driven architectures, scalable service design, and cloud-native patterns.",
       "achievements": [
-        "Implemented event sourcing with MongoDB, storing full snapshots and calculating deltas between them for analytics and tracking",
+        "Implemented an event store in MongoDB that stores full snapshots and computes deltas between events to support analytics and state tracking.",
         "Designed and maintained a distributed mail service using Kafka, PostgreSQL, and MailKit, supporting multiple backend providers with secure credential management",
         "Architected and integrated WorkflowCore orchestration, enabling complex distributed workflows with saga patterns and custom retry mechanisms",
         "Integrated Keycloak-based user access management for multi-tenant environments, ensuring secure gRPC inter-service communication",
@@ -105,7 +105,7 @@
   "projects": [
     {
       "title": "Srotas",
-      "description": "CLI tool for orchestrating API requests and testing distributed workflows.",
+      "description": "A Go-based CLI for orchestrating API workflows, designed to test event-driven and distributed systems.",
       "highlights": [
         "Built a Go CLI application with Cobra to chain API requests for simulating complex workflows.",
         "Enabled declarative scenario definitions and reusable orchestration patterns for testing distributed interactions.",
